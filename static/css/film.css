@@ -1,0 +1,128 @@
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Навигационная панель */
+.navbar {
+    background-color: #1c1c1c;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-container h1 {
+    color: #e50914;
+    font-family: 'Sen', sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.menu-container .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-container .menu-list-item {
+    margin-right: 20px;
+}
+
+.menu-container .menu-list-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-container .username {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.profile-container .logout-link,
+.profile-container .login-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-container {
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+}
+
+/* Стили для страницы с деталями фильма */
+.film-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.film-details-poster {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.film-details-info {
+    text-align: center;
+}
+
+.film-details-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.film-details-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.film-details-year,
+.film-details-rating,
+.film-details-genre {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; 
+}
+
+.video-container video {
+    max-width: 100%;
+    max-height: 100%;
+}

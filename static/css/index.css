@@ -1,0 +1,133 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #151515;
+    color: #fff;
+}
+
+.navbar, .sidebar {
+    background-color: #202020;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu-list, .profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.menu-list-item {
+    margin: 0 15px;
+    list-style: none;
+}
+
+.menu-list-item a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.profile-container .username {
+    margin-right: 10px;
+}
+
+.login-link, .logout-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+}
+
+.content-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.featured-content {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    background-size: 10px;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.featured-title {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.movie-list-container {
+    margin-bottom: 20px;
+}
+
+.movie-list-title {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.movie-list-wrapper {
+    position: relative;
+}
+
+.movie-list {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.movie-list-item {
+    min-width: 200px;
+    margin-right: 20px;
+    background-color: #202020;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.movie-list-item-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.movie-list-item-title {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.movie-list-item-desc {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.movie-list-item-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6b6b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.movie-list-item-button:hover {
+    background-color: #ff3b3b;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    color: #ff6b6b;
+}

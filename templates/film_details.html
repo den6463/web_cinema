@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/film.css') }}">
+
+    <title>{{ film.Title }}</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">flMov</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item"><a href="/">Home</a></li>    
+                    <li class="menu-list-item">Movies</li>
+                    <li class="menu-list-item">Series</li>
+                    <li class="menu-list-item">Popular</li>
+                    <li class="menu-list-item">Trends</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                {% if current_user %}
+                <span class="username">{{ current_user.username }}</span>
+                <a href="/logout" class="logout-link">Logout</a>
+                    {% else %}
+                        <a href="/login" class="login-link">Login</a>
+                    {% endif %}
+                    <div class="toggle">
+                        <i class="fas fa-moon toggle-icon"></i>
+                        <i class="fas fa-sun toggle-icon"></i>
+                        <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Контейнер для содержимого -->
+    <div class="container">
+        <div class="content-container film-details">
+            <img class="film-details-poster" src="../{{ film.Poster }}" alt="{{ film.Title }}">
+            <div class="film-details-info">
+                <h1 class="film-details-title">{{ film.Title }}</h1>
+                <p class="film-details-description">{{ film.Description }}</p>
+                <p class="film-details-year">Release Year: {{ film.ReleaseYear }}</p>
+                <p class="film-details-rating">Rating: {{ ratings.AvgRating }} ({{ ratings.NumRatings }} reviews)</p>
+                <p class="film-details-genre">Genre: {{ film.Genre }}</p>
+                <h2>Sessions</h2>
+            <ul>
+                {% for session in sessions %}
+                    <li>
+                        <p>Start Time: {{ session.StartTime }}</p>
+                        <p>Ticket Price: {{ session.TicketPrice }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h1 class="film-details-title">Или смотрите онлайн</h1>
+            </div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="../static/video/1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="movie-list-container">
+            <h1 class="movie-list-title">Похожие фильмы</h1>
+            <div class="movie-list-wrapper">
+                <div class="movie-list">
+                    {% for similar_film in similar_films %}
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="../{{ similar_film.Poster }}" alt="{{ similar_film.Title }}">
+                        <span class="movie-list-item-title">{{ similar_film.Title }}</span>
+                        <p class="movie-list-item-desc">{{ similar_film.Description }}</p>
+                        <a href="../{{ url_for('film_details', film_id=similar_film.FilmID) }}" class="movie-list-item-button">Watch</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/index.js"></script>
+</body>
+</html>

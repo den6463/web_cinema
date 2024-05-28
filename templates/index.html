@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Movie Website Re-Design</title>
+    <script>
+
+        function goToRegisterPage() {
+            window.location.href = 'register';
+        }
+
+        window.onload = function() {
+            document.getElementById('profile-button').addEventListener('click', goToRegisterPage);
+        }
+    </script>
+</head>
+<body>
+    <body>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container">
+                    <h1 class="logo">flMov</h1>
+                </div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li class="menu-list-item"><a href="/">Home</a></li>
+                        <li class="menu-list-item">Movies</li>
+                        <li class="menu-list-item">Series</li>
+                        <li class="menu-list-item">Popular</li>
+                        <li class="menu-list-item">Trends</li>
+                    </ul>
+                </div>
+                <div class="profile-container">
+                    {% if current_user %}
+                        <span class="username">{{ current_user }}</span>
+                        <a href="/logout" class="logout-link">Logout</a>
+                        {% else %}
+                            <a href="/login" class="login-link">Login</a>
+                        {% endif %}
+                        <div class="toggle">
+                            <i class="fas fa-moon toggle-icon"></i>
+                            <i class="fas fa-sun toggle-icon"></i>
+                            <div class="toggle-ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <i class="left-menu-icon fas fa-search"></i>
+        <i class="left-menu-icon fas fa-home"></i>
+        <i class="left-menu-icon fas fa-users"></i>
+        <i class="left-menu-icon fas fa-bookmark"></i>
+        <i class="left-menu-icon fas fa-tv"></i>
+        <i class="left-menu-icon fas fa-hourglass-start"></i>
+        <i class="left-menu-icon fas fa-shopping-cart"></i>
+    </div>
+
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-content" style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('static/img/main.jpg');">
+                <img class="featured-title" src="" alt="">
+                <p class="featured-desc"><h1>Наслаждайтесь лучшими фильмами вместе с нами!</h1></p>
+            </div>
+
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW RELEASES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        {% for film in films_new %}
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ film.poster }}" alt="{{ film.title }}">
+                            <span class="movie-list-item-title">{{ film.title }}</span>
+                            <p class="movie-list-item-desc">{{ film.description }}</p>
+                            <a href="{{ url_for('film_details', film_id=film[0]) }}" class="movie-list-item-button">Watch</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">Most Popular</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        {% for film in films_old %}
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="{{ film.Poster }}" alt="{{ film.Title }}">
+                            <span class="movie-list-item-title">{{ film.Title }}</span>
+                            <p class="movie-list-item-desc">{{ film.Description }}</p>
+                            <a href="{{ url_for('film_details', film_id=film[0]) }}" class="movie-list-item-button">Watch</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/index.js"></script>
+</body>
+</html>
